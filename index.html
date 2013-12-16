@@ -1,17 +1,48 @@
+
 <html>
 <head>
-  <title>Riot Starter</title>
+  <title>Hometown Hunt</title>
+  <link rel="stylesheet" type="text/css" href="">
+  <script type="text/javascript"></script>
 </head>
 <body>
 
 <!-- HTML -->
+<div id="checkpoint-list"></div>
 
 <div id="templates">
-  <!-- TEMPLATES -->
+	<script type="text/template">
+	  <li data-id="{id}">
+	     <div class="view">
+	        <input class="toggle" type="checkbox">
+	        <label>{name}</label>
+	        <label>{address}</label>
+	        <label>{hint}</label>
+	        <label>{prize}</label>
+	        <label>{answer}</label>
+	        <button class="destroy"/>
+	     </div>
+	     <input class="edit" value="{name}">
+	  </li>
+	</script>
 </div>
+
+
+
+<form id="new-checkpoint">
+	<input class="name" name="name" placeholder="Name" value="mks">
+	<input class="address" name="address" placeholder="Address" value="716 congress">
+	<input class="hint" name="hint" placeholder="Hint" value="go to the right">
+	<input class="answer" name="answer" placeholder="Answer" value="chipotle">
+	<input class="prize" name="prize" placeholder="Prize (optional)" value="burrito">
+	<input type="submit" class="submit" value="press this shiz">
+</form>
+
+
 
 <script src="vendor/js/jquery-1.10.2.min.js"></script>
 <script src="vendor/js/riot.js"></script>
+<script src="js/checkpoint.js"></script>
 <script src="js/main.js"></script>
 
 </body>
