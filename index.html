@@ -1,18 +1,28 @@
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <title>Hometown Hunt</title>
-  <link rel="stylesheet" type="text/css" href="">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript"></script>
 </head>
 <body>
 
-<!-- HTML -->
+	<!-- CREATE FORM -->
+	<form id="new-checkpoint">
+		<input class="name" name="name" placeholder="Name" value="mks">
+		<input class="address" name="address" placeholder="Address" value="716 congress">
+		<input class="hint" name="hint" placeholder="Hint" value="go to the right">
+		<input class="answer" name="answer" placeholder="Answer" value="chipotle">
+		<input class="prize" name="prize" placeholder="Prize (optional)" value="burrito">
+		<input type="submit" class="submit" value="press this shiz">
+	</form>
 
+	<!-- the root div mapped to $root in riot js -->
+	<div id="checkpoint-list"></div>
 
-
+	<!-- Templates -->
 	<script type="text/template">
-	  <li data-id='{id}' class='checkpoint-item'>
+	  <div data-id='{id}' class='checkpoint-item'>
 	     <div class='view'>
 	        <input class='toggle' type='checkbox' >
 	        <label>{name}</label>
@@ -22,28 +32,14 @@
 	        <label>{answer}</label>
 	        <input type='button' class='destroy' value='Destroy'/>
 	     </div>
-	     <input class='edit' value='{name}'>
-	  </li>
+	     Edit Name: <input class='edit' value='{name}'>
+	  </div>
 	</script>
-	<div id="checkpoint-list"></div>
 
-
-
-<form id="new-checkpoint">
-	<input class="name" name="name" placeholder="Name" value="mks">
-	<input class="address" name="address" placeholder="Address" value="716 congress">
-	<input class="hint" name="hint" placeholder="Hint" value="go to the right">
-	<input class="answer" name="answer" placeholder="Answer" value="chipotle">
-	<input class="prize" name="prize" placeholder="Prize (optional)" value="burrito">
-	<input type="submit" class="submit" value="press this shiz">
-</form>
-
-
-
-<script src="vendor/js/jquery-1.10.2.min.js"></script>
-<script src="vendor/js/riot.js"></script>
-<script src="js/checkpoint.js"></script>
-<script src="js/main.js"></script>
+	<script src="vendor/js/jquery-1.10.2.min.js"></script>
+	<script src="vendor/js/riot.js"></script>
+	<script src="js/checkpoint.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
 </html>

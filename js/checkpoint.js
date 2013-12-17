@@ -1,5 +1,5 @@
 var Checkpoint = function () {
-	// initialize a checkpoints array for all them to 
+	// initialize a checkpoints array for all them to
 	// be stored in
 	checkpoints = [];
 	// make this object watch itself
@@ -15,15 +15,10 @@ var Checkpoint = function () {
 		var checkpoint = checkpoints.splice((index-1), 1);
 		this.trigger("destroy", checkpoint);
 		console.log(checkpoint)
-
-
 	};
 
 	this.update = function () {
 
 	};
-
-
-
 
 }

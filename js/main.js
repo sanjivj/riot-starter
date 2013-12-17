@@ -4,15 +4,15 @@ var checkpoint = new Checkpoint()
   , template = $("[type='text/template']").html()
   , checkpointAttributes = {}
   , checkPointId = 0
-  
+
 
 	// Since the Presenter is aware of the DOM
-	// it will turn the parts of the dom into 
+	// it will turn the parts of the dom into
 	// a checkpoint object
 	// that it will pass to the model in checkpoint.js
 	setNewCheckpointObj = function () {
 		// make a new unique id by counting up
-		checkPointId += 1; 
+		checkPointId += 1;
 		// set the new checkpoint attributes
 		checkpointAttributes = {
 			id: checkPointId,
@@ -27,17 +27,11 @@ var checkpoint = new Checkpoint()
 
 	; // end the variable declarations
 
-	// findCheckpointIndex = function () {
-	// 	var index = $('li').data('id');
-	// 	return index;
-	// }
-
-
 // DOM Event Listeners
 
 	$('#new-checkpoint').on('click', ".submit", function(e) {
 		// make sure the form submit doesn't reload the page
-		e.preventDefault(); 
+		e.preventDefault();
 		newCheckpoint = setNewCheckpointObj();
 		checkpoint.create(newCheckpoint);
 	});
