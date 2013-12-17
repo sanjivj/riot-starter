@@ -8,24 +8,24 @@
 <body>
 
 <!-- HTML -->
-<div id="checkpoint-list"></div>
 
-<div id="templates">
+
+
 	<script type="text/template">
-	  <li data-id="{id}">
-	     <div class="view">
-	        <input class="toggle" type="checkbox">
+	  <li data-id='{id}' class='checkpoint-item'>
+	     <div class='view'>
+	        <input class='toggle' type='checkbox' >
 	        <label>{name}</label>
 	        <label>{address}</label>
 	        <label>{hint}</label>
 	        <label>{prize}</label>
 	        <label>{answer}</label>
-	        <button class="destroy"/>
+	        <input type='button' class='destroy' value='Destroy'/>
 	     </div>
-	     <input class="edit" value="{name}">
+	     <input class='edit' value='{name}'>
 	  </li>
 	</script>
-</div>
+	<div id="checkpoint-list"></div>
 
 
 

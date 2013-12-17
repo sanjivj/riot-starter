@@ -1,10 +1,10 @@
 // $(function(){
 var checkpoint = new Checkpoint()
   , $root = $("#checkpoint-list")
-  , template = $("#templates").html()
+  , template = $("[type='text/template']").html()
   , checkpointAttributes = {}
   , checkPointId = 0
-  ,
+  
 
 	// Since the Presenter is aware of the DOM
 	// it will turn the parts of the dom into 
@@ -22,11 +22,15 @@ var checkpoint = new Checkpoint()
 			prize: $('#new-checkpoint input[name="prize"]').val(),
 			answer: $('#new-checkpoint input[name="answer"]').val()
 		};
-		console.log('checkpointAttributes:', checkpointAttributes);
 		return checkpointAttributes;
 	}
 
 	; // end the variable declarations
+
+	// findCheckpointIndex = function () {
+	// 	var index = $('li').data('id');
+	// 	return index;
+	// }
 
 
 // DOM Event Listeners
@@ -38,15 +42,23 @@ var checkpoint = new Checkpoint()
 		checkpoint.create(newCheckpoint);
 	});
 
+	$($root).on('click', '.destroy', function(e) {
+		e.preventDefault();
+		var index = $('li').data('id')-1;
+		console.log('index being destroyed', index)
+		checkpoint.destroy(index);
+	});
+
 // Model Event Listeners
 
-	checkpoint.on("create", function() {
+	checkpoint.on("create", function(item) {
 
-		var newHtml = $.render(template);
-		root.append(newHtml);
+		var newHtml = $($.render(template, item));
+		newHtml.appendTo($root);
 
-	}).on("destroy", function() {
+	}).on("destroy", function(item) {
 
+		$('li[data-id=' + item[0].id + ']').remove();
 
 
 	}).on("update", function() {

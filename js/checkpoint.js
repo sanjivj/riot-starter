@@ -11,7 +11,11 @@ var Checkpoint = function () {
 		this.trigger("create", checkpointAttributes);
 	};
 
-	this.destroy = function () {
+	this.destroy = function (index) {
+		var checkpoint = checkpoints.splice((index-1), 1);
+		this.trigger("destroy", checkpoint);
+		console.log(checkpoint)
+
 
 	};
 
