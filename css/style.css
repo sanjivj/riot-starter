@@ -2,10 +2,21 @@ body {
 	font-family: sans-serif;
 }
 
+.error {
+	border: 1px solid red;
+	font-weight: normal;
+	color: red;
+	background: rgb(221, 175, 175);
+	padding: 0 10px;
+}
+
 #new-list-item {
 	border: 1px solid #000;
 	padding: 10px;
 	background: #B6C1DD;
+}
+#new-list-item input[type="text"] {
+	width: 400px;
 }
 
 .list-item {
@@ -17,6 +28,7 @@ body {
 .list-item:hover {
 	background: rgb(241, 241, 176);
 }
+
 
 .li-name {
 	font-weight: bold;

@@ -32,10 +32,26 @@ var listItem = new ListItem()
 		// make sure the form submit doesn't reload the page
 		e.preventDefault();
 		newListItem = setNewListItemObj();
+
+		// Validations:
+		// only take it if the two input fields have values
+		if (newListItem.name === '' || newListItem.priority === '') {
+			$('.error').show().text('Warning: You must include both an item name and an item priority.');
+			return;
+		} else {
+			$('.error').hide();
+		}
+
 		listItem.create(newListItem);
+
+		// clear out the new items input fields
+		$('#new-list-item input[name="name"]').val('');
+		$('#new-list-item input[name="priority"]').val('');
+
 	});
 
 	$($root).on('click', '.destroy', function(e) {
+
 		e.preventDefault();
 		var index = +$(this).parents('.list-item').data('id');
 		listItem.destroy(index);
