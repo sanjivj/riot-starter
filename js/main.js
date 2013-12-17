@@ -1,64 +1,76 @@
 // $(function(){
-var checkpoint = new Checkpoint()
-  , $root = $("#checkpoint-list")
+var listItem = new ListItem()
+  , $root = $("#list-items")
   , template = $("[type='text/template']").html()
-  , checkpointAttributes = {}
-  , checkPointId = 0
+  , listItemAttributes = {}
+  , listItemId = 0
 
 
 	// Since the Presenter is aware of the DOM
 	// it will turn the parts of the dom into
-	// a checkpoint object
-	// that it will pass to the model in checkpoint.js
-	setNewCheckpointObj = function () {
-		// make a new unique id by counting up
-		checkPointId += 1;
-		// set the new checkpoint attributes
-		checkpointAttributes = {
-			id: checkPointId,
-			name: $('#new-checkpoint input[name="name"]').val(),
-			address: $('#new-checkpoint input[name="address"]').val(),
-			hint: $('#new-checkpoint input[name="hint"]').val(),
-			prize: $('#new-checkpoint input[name="prize"]').val(),
-			answer: $('#new-checkpoint input[name="answer"]').val()
+	// a list item object
+	// that it will pass to the model in list-item.js
+	setNewListItemObj = function () {
+		// set the new list item attributes
+		// this is similar to the options hash in ruby
+		listItemAttributes = {
+			id: listItemId,
+			name: $('#new-list-item input[name="name"]').val(),
+			priority: $('#new-list-item input[name="priority"]').val()
 		};
-		return checkpointAttributes;
+		// make a new unique id for the next list item to be created
+		// by incrementing by 1 each time a list item is created
+		listItemId += 1;
+		return listItemAttributes;
 	}
 
 	; // end the variable declarations
 
 // DOM Event Listeners
 
-	$('#new-checkpoint').on('click', ".submit", function(e) {
+	$('#new-list-item').on('click', ".submit", function(e) {
 		// make sure the form submit doesn't reload the page
 		e.preventDefault();
-		newCheckpoint = setNewCheckpointObj();
-		checkpoint.create(newCheckpoint);
+		newListItem = setNewListItemObj();
+		listItem.create(newListItem);
 	});
 
 	$($root).on('click', '.destroy', function(e) {
 		e.preventDefault();
-		var index = $('li').data('id')-1;
-		console.log('index being destroyed', index)
-		checkpoint.destroy(index);
+		var index = +$(this).parents('.list-item').data('id');
+		listItem.destroy(index);
+
+	}).on('click', '.save-edit', function(e) {
+		e.preventDefault();
+		var index = +$(this).closest('.list-item').data('id');
+		// update the item value
+		var newText = $(this).prevAll('.edit-name').val();
+		var newPriority = $(this).prevAll('.edit-priority').val();
+		// run the model update function
+		listItem.update(index, newText, newPriority);
+	// only show the edit on hover over
+	// a list item
+	}).on('mouseover', ".list-item", function() {
+		$(this).find('.hover-to-reveal').show();
+	}).on('mouseout', ".list-item", function() {
+		$(this).find('.hover-to-reveal').hide();
 	});
+
+
 
 // Model Event Listeners
 
-	checkpoint.on("create", function(item) {
-
+	listItem.on("create", function(item) {
 		var newHtml = $($.render(template, item));
 		newHtml.appendTo($root);
-
 	}).on("destroy", function(item) {
+		$('div.list-item[data-id=' + item[0].id + ']').remove();
+	}).on("update", function(item) {
 
-		$('li[data-id=' + item[0].id + ']').remove();
-
-
-	}).on("update", function() {
-
-
-
+		$('div.list-item[data-id=' + item.id + ']').find(".li-name").text(item.name).val(item.name);
+		$('div.list-item[data-id=' + item.id + ']').find(".li-priority").text(item.priority).val(item.priority);
+	  	// $(".li-name").text(item.name).val(item.name);
+	  	// $(".li-priority").text(item.priority).val(item.priority);
 	});
 
 // });

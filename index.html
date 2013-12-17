@@ -8,37 +8,35 @@
 <body>
 
 	<!-- CREATE FORM -->
-	<form id="new-checkpoint">
-		<input class="name" name="name" placeholder="Name" value="mks">
-		<input class="address" name="address" placeholder="Address" value="716 congress">
-		<input class="hint" name="hint" placeholder="Hint" value="go to the right">
-		<input class="answer" name="answer" placeholder="Answer" value="chipotle">
-		<input class="prize" name="prize" placeholder="Prize (optional)" value="burrito">
-		<input type="submit" class="submit" value="press this shiz">
+	<form id="new-list-item">
+		<h3>Make a New Item</h3>
+		Item Name: <input class="name" name="name" placeholder="Item Name" value="laundry">
+		Task Priority: <input class="priority" name="priority" placeholder="Priority (1 is highest - 1,2,3)" value="1">
+		<input type="submit" class="submit" value="Create!">
 	</form>
 
 	<!-- the root div mapped to $root in riot js -->
-	<div id="checkpoint-list"></div>
+	<div id="list-items"></div>
 
 	<!-- Templates -->
 	<script type="text/template">
-	  <div data-id='{id}' class='checkpoint-item'>
+	  <div data-id='{id}' class='list-item'>
 	     <div class='view'>
-	        <input class='toggle' type='checkbox' >
-	        <label>{name}</label>
-	        <label>{address}</label>
-	        <label>{hint}</label>
-	        <label>{prize}</label>
-	        <label>{answer}</label>
+	        <label class="li-name">{name}</label>
+	        <label>( Priority: <span class="li-priority">{priority}</span> )</label>
 	        <input type='button' class='destroy' value='Destroy'/>
 	     </div>
-	     Edit Name: <input class='edit' value='{name}'>
+	     <div class="edit-item-section hover-to-reveal" style="display:none;">
+	     Edit Name: <input class='edit-name' value='{name}'>
+	     Edit Priority: <input class='edit-priority' value='{priority}'>
+	     <input type='button' class='save-edit' value='Save Edits'/>
+	     </div>
 	  </div>
 	</script>
 
 	<script src="vendor/js/jquery-1.10.2.min.js"></script>
 	<script src="vendor/js/riot.js"></script>
-	<script src="js/checkpoint.js"></script>
+	<script src="js/list-item.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
