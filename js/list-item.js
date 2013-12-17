@@ -17,7 +17,7 @@ var ListItem = function () {
 	};
 
 	this.update = function (index, name, priority) {
-		console.log('index:', index, 'name:', name, 'priority:', priority)
+		// console.log('index:', index, 'name:', name, 'priority:', priority);
 		listItems[index].name = name;
 		listItems[index].priority = priority;
 		this.trigger("update", listItems[index]);

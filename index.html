@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Hometown Hunt</title>
+  <title>List Maker!</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript"></script>
 </head>
 <body>
 
+	<h1>List Maker</h1>
+
 	<!-- CREATE FORM -->
 	<form id="new-list-item">
 		<h3>Make a New Item</h3>
-		Item Name: <input class="name" name="name" placeholder="Item Name" value="laundry">
-		Task Priority: <input class="priority" name="priority" placeholder="Priority (1 is highest - 1,2,3)" value="1">
+		Item Name: <input type="text" class="name" name="name" placeholder="Item Name" value="laundry">
+		Task Priority: <input type="text" class="priority" name="priority" placeholder="Priority (1 is highest - 1,2,3)" value="1">
 		<input type="submit" class="submit" value="Create!">
 	</form>
 
@@ -27,8 +29,8 @@
 	        <input type='button' class='destroy' value='Destroy'/>
 	     </div>
 	     <div class="edit-item-section hover-to-reveal" style="display:none;">
-	     Edit Name: <input class='edit-name' value='{name}'>
-	     Edit Priority: <input class='edit-priority' value='{priority}'>
+	     Edit Name: <input type="text" class='edit-name' value='{name}'>
+	     Edit Priority: <input type="text" class='edit-priority' value='{priority}'>
 	     <input type='button' class='save-edit' value='Save Edits'/>
 	     </div>
 	  </div>

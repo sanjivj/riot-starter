@@ -1,4 +1,4 @@
-// $(function(){
+$(function(){
 var listItem = new ListItem()
   , $root = $("#list-items")
   , template = $("[type='text/template']").html()
@@ -63,15 +63,16 @@ var listItem = new ListItem()
 	listItem.on("create", function(item) {
 		var newHtml = $($.render(template, item));
 		newHtml.appendTo($root);
+
 	}).on("destroy", function(item) {
+
 		$('div.list-item[data-id=' + item[0].id + ']').remove();
+
 	}).on("update", function(item) {
 
 		$('div.list-item[data-id=' + item.id + ']').find(".li-name").text(item.name).val(item.name);
 		$('div.list-item[data-id=' + item.id + ']').find(".li-priority").text(item.priority).val(item.priority);
-	  	// $(".li-name").text(item.name).val(item.name);
-	  	// $(".li-priority").text(item.priority).val(item.priority);
 	});
 
-// });
+});
 
