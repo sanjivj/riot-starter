@@ -31,6 +31,8 @@ var listItem = new ListItem()
 		formattedList = $('#list-items-index-view');
 		// empty out the right side
 		formattedList.html('');
+		// put back the title
+		formattedList.html('<h4>View List Items</h4>');
 		sortedListItems.forEach(function(item) {
 			var newHtml = $($.render(template, item));
 			newHtml.appendTo(formattedList);
@@ -101,10 +103,19 @@ var listItem = new ListItem()
 
 		$('div.list-item[data-id=' + item[0].id + ']').remove();
 
+		// call the sorted items function
+		// to rerender the right side of the page
+		renderSortedList();
+
 	}).on("update", function(item) {
 
 		$('div.list-item[data-id=' + item.id + ']').find(".li-name").text(item.name).val(item.name);
 		$('div.list-item[data-id=' + item.id + ']').find(".li-priority").text(item.priority).val(item.priority);
+
+
+		// call the sorted items function
+		// to rerender the right side of the page
+		renderSortedList();
 	});
 
 });

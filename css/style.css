@@ -1,7 +1,13 @@
+* {box-sizing: border-box;}
 body {
 	font-family: sans-serif;
 	margin: 0;
 	padding: 0;
+	/*box-sizing: border-box;*/
+}
+
+h4 {
+	text-align: center;
 }
 
 .error {
@@ -12,9 +18,17 @@ body {
 	padding: 0 10px;
 }
 
+#list-items-index-view {
+	border-left: 1px solid #000;
+}
+
 #list-items, #list-items-index-view {
 	width: 50%;
 	float: left;
+}
+
+#list-items-index-view .destroy, #list-items-index-view .li-id {
+	display: none;
 }
 
 #new-list-item {

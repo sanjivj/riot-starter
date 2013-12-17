@@ -12,7 +12,7 @@ var ListItem = function () {
 	};
 
 	this.destroy = function (index) {
-		var listItem = listItems.slice(index);
+		var listItem = listItems.slice(index, (index + 1));
 		this.trigger("destroy", listItem);
 	};
 
