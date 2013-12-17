@@ -1,7 +1,7 @@
 var ListItem = function () {
 	// initialize a checkpoints array for all them to
 	// be stored in
-	listItems = [];
+	window.listItems = [];
 	// make this object watch itself
 	$.observable(this);
 

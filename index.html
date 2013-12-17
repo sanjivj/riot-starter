@@ -17,13 +17,19 @@
 		<input type="submit" class="submit" value="Create!" />
 	</form>
 
-	<!-- the root div mapped to $root in riot js -->
-	<div id="list-items"></div>
+	<div id="main-items-views">
+		<!-- the root div mapped to $root in riot js -->
+		<div id="list-items"></div>
+
+		<!-- this list will stay ordered through model updates -->
+		<div id="list-items-index-view"></div>
+	</div>
 
 	<!-- Templates -->
 	<script type="text/template">
 	  <div data-id='{id}' class='list-item'>
 	     <div class='view'>
+	     	<label class="li-id">(id: {id})</label>
 	        <label class="li-name">{name}</label>
 	        <label>( Priority: <span class="li-priority">{priority}</span> )</label>
 	        <input type='button' class='destroy' value='Destroy'/>

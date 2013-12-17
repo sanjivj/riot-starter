@@ -1,5 +1,7 @@
 body {
 	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 .error {
@@ -8,6 +10,11 @@ body {
 	color: red;
 	background: rgb(221, 175, 175);
 	padding: 0 10px;
+}
+
+#list-items, #list-items-index-view {
+	width: 50%;
+	float: left;
 }
 
 #new-list-item {

@@ -23,6 +23,19 @@ var listItem = new ListItem()
 		listItemId += 1;
 		return listItemAttributes;
 	}
+	renderSortedList = function() {
+		var sortedListItems = listItems.sort(function(a, b) {
+			return a.priority - b.priority;
+		});
+		// grab the right side of the page as a variable
+		formattedList = $('#list-items-index-view');
+		// empty out the right side
+		formattedList.html('');
+		sortedListItems.forEach(function(item) {
+			var newHtml = $($.render(template, item));
+			newHtml.appendTo(formattedList);
+		});
+	}
 
 	; // end the variable declarations
 
@@ -79,6 +92,10 @@ var listItem = new ListItem()
 	listItem.on("create", function(item) {
 		var newHtml = $($.render(template, item));
 		newHtml.appendTo($root);
+
+		// call the sorted items function
+		// to rerender the right side of the page
+		renderSortedList();
 
 	}).on("destroy", function(item) {
 
