@@ -1,7 +1,6 @@
 (function () {
 
-  var listItem = new ListItem()
-    , $root = $("#list-items")
+  var $root = $("#list-items")
     , template = $("[type='text/template']").html()
     , listItemAttributes = {}
     , listItemId = 0
@@ -26,6 +25,7 @@
     return listItemAttributes;
   }
   renderSortedList = function() {
+    return; // temp
     var sortedListItems = listItems.sort(function(a, b) {
       return a.priority - b.priority;
     });
@@ -71,7 +71,7 @@
 
     e.preventDefault();
     var index = +$(this).parents('.list-item').data('id');
-    listItem.destroy(index);
+    listItems.destroy(index);
 
   }).on('click', '.save-edit', function(e) {
     e.preventDefault();
@@ -80,7 +80,7 @@
     var newText = $(this).prevAll('.edit-name').val();
     var newPriority = $(this).prevAll('.edit-priority').val();
     // run the model update function
-    listItem.update(index, newText, newPriority);
+    listItems.update(index, newText, newPriority);
   // only show the edit on hover over
   // a list item
   }).on('mouseover', ".list-item", function() {
@@ -93,7 +93,7 @@
 
 // Model Event Listeners
 
-  listItem.on("create", function(item) {
+  listItems.on("create", function(item) {
     var newHtml = $($.render(template, item));
     newHtml.appendTo($root);
 
