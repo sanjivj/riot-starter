@@ -50,4 +50,11 @@
     $('.list-item', $root).eq(itemIndex).remove();
   });
 
+  /*/ DELETE THIS LINE FOR THE EXTENSION
+  // When we hear the 'update' event, that means a list item's data
+  // has just updated. We need to update the page to reflect that,
+  // as well as remove the 'edit' class so the edit form disappears
+  listItems.on(...);
+  /**/
+
 })();
