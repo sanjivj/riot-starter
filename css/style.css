@@ -31,12 +31,12 @@ h4 {
   display: none;
 }
 
-#new-list-item {
+form.new-list-item {
   border: 1px solid #000;
   padding: 10px;
   background: #B6C1DD;
 }
-#new-list-item input[type="text"] {
+form.new-list-item input[type="text"] {
   width: 400px;
 }
 
