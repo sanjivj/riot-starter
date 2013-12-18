@@ -13,44 +13,44 @@
   <form class="new-list-item">
     <h3>Make a New Item <span class="error" style="display:none;"></span></h3>
     Item Name: <input type="text" class="name" name="name" placeholder="Item Name (e.g. Get Groceries)" autocomplete="off" />
-    Task Priority: <input type="text" class="priority" name="priority" placeholder="Priority (1 is highest - 1, 2, 3)" autocomplete="off" />
+    Task Category: <input type="text" class="category" name="category" placeholder="Category (1 is highest - 1, 2, 3)" autocomplete="off" />
     <input type="submit" class="submit" value="Create!" />
   </form>
 
-  <div id="main-items-views">
+  <div id="main">
+    <h2>Manage List Items</h2>
     <!-- the root div mapped to $root in riot js -->
-    <div id="list-items">
-      <h4>Manage List Items</h4>
-    </div>
-
-    <!-- this list will stay ordered through model updates -->
-    <div id="list-items-index-view">
-      <h4>View List Items</h4>
-    </div>
+    <div class="list-items"></div>
   </div>
 
   <!-- Templates -->
-  <script type="text/template">
-    <div data-id='{id}' class='list-item'>
-       <div class='view'>
-        <label class="li-id">(id: {id})</label>
-          <label class="li-name">{name}</label>
-          <label>( Priority: <span class="li-priority">{priority}</span> )</label>
-          <input type='button' class='destroy' value='Destroy'/>
-       </div>
-       <div class="edit-item-section hover-to-reveal" style="display:none;">
-       Edit Name: <input type="text" class='edit-name' value='{name}'>
-       Edit Priority: <input type="text" class='edit-priority' value='{priority}'>
-       <input type='button' class='save-edit' value='Save Edits'/>
-       </div>
-    </div>
-  </script>
+  <div id="templates">
 
+    <script class="list-item" type="text/template">
+      <li class="list-item">
+         <div class="view">
+            <label class="li-name">{name}</label>
+            <label>( Category: <span class="li-category">{category}</span> )</label>
+            <input type="button" class="destroy" value="Destroy"/>
+            <input type="button" class="edit" value="Edit"/>
+         </div>
+         <div class="edit-item">
+           Edit Name: <input type="text" class="edit-name" value="{name}">
+           Edit Category: <input type="text" class="edit-category" value="{category}">
+           <input type="button" class="save-edit" value="Save Edits"/>
+         </div>
+      </li>
+    </script>
+  </div>
+
+  <!-- 3rd party scripts -->
   <script src="vendor/js/jquery-1.10.2.min.js"></script>
   <script src="vendor/js/riot.js"></script>
-  <script src="js/list-item-form.js"></script>
-  <script src="js/list-item.js"></script>
-  <script src="js/main.js"></script>
+  <!-- Models -->
+  <script src="js/models/list-item.js"></script>
+  <!-- Views -->
+  <script src="js/presenters/list-item-form.js"></script>
+  <script src="js/presenters/list-item-list.js"></script>
 
 </body>
 </html>

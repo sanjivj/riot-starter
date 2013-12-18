@@ -7,7 +7,9 @@
    * using the global ListItem model.
    */
 
-  var $root = $('form.new-list-item');
+  var $root = $('form.new-list-item')
+    , invalidText = '(!) You must include both an item name and an item category.'
+  ;
 
 // View (HTML) Interactions
 
@@ -18,13 +20,13 @@
     // Grab all data that the user typed in
     newListItem = {
       name: $('.name', $root).val(),
-      priority: $('.priority', $root).val()
+      category: $('.category', $root).val()
     };
 
-    // Validations:
-    // only take it if the two input fields have values
-    if (newListItem.name === '' || newListItem.priority === '') {
-      $('.error').show().text('Warning: You must include both an item name and an item priority.');
+    // Validation:
+    // Only accept if both the input fields have values
+    if (newListItem.name === '' || newListItem.category === '') {
+      $('.error').show().text(invalidText);
       return;
     } else {
       $('.error').hide();
@@ -34,7 +36,7 @@
     listItems.create(newListItem);
 
     // clear out the new items input fields
-    $('input', $root).val('');
+    $('input[type="text"]', $root).val('');
   });
 
 })();
