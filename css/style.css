@@ -6,8 +6,7 @@ body {
 	/*box-sizing: border-box;*/
 }
 img {
-	height: 200px;
-	width: 300px;
+	width: 150px;
 	cursor: pointer;
 }
 
@@ -32,20 +31,26 @@ h4 {
 }
 
 .list-items, #list-items-index-view {
-	width: 50%;
+	/*width: 50%;*/
 	float: left;
+}
+
+.list-items {
+	height: 200px;
 }
 
 #list-items-index-view .destroy, #list-items-index-view .li-id {
 	display: none;
 }
 
-#new-list-item {
+#new-puppy {
 	border: 1px solid #000;
 	padding: 10px;
 	background: #B6C1DD;
+	clear: left;
+	height: 100px;
 }
-#new-list-item input[type="text"] {
+#new-puppy input[type="text"] {
 	width: 400px;
 }
 

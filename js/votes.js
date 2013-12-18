@@ -1,27 +1,26 @@
 $(function(){
-var vote = new Vote()
-  , template = $("[type='text/template'].template1").html()
-	; // end the variable declarations
+var template = $("[type='text/template'].vote").html()
+  , $root = $("#main-items-views")	
+  ; // end the variable declarations
 
 // DOM Event Listeners
-	$(document).on('ready', function() {
-		$('.vote-image').on('click', function(e) {
-			e.preventDefault();
-			var index = $(this).attr('data-index')
-			vote.add(index)
 
-		});
+
+	// Using event delegation on the $root because the
+	// because the image is in the template to be rendered. 
+	$('#main-items-views').on('click', '.vote-image', function(e) {
+		e.preventDefault();
+		var index = $(this).parents(".list-items").data('image');
+		puppy.castVote(index);
+	});
+
+
+	// Model Event Listeners
+
+	puppy.on("cast", function(votes, index) {		
+		$root.children(".list-items[data-image="+ index +"]")
+				.find('.li-id')
+				.text('Votes:' + votes);
+
 	})
-
-
-
-// Model Event Listeners
-
-	vote.on("add", function(item, index) {
-		var newHtml = $($.render(template, item));
-		$(".vote-count[data-image=" + index +"]").empty()
-		newHtml.appendTo($(".vote-count[data-image=" + index +"]"));
-
-	})
-
 });

@@ -1,79 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>List Maker!</title>
+  <title>PupOrNot!</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
   <script type="text/javascript"></script>
 </head>
 <body>
 
-	<h1>Pet Comparer</h1>
+	<h1>PupOrNot</h1>
+
+	<div class="ranking"></div>
 
 	<h2>Click Image to Vote!</h2>
+	<!-- Create Form -->
+	<form id="new-puppy">
+		Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<input type="text" class="name" name="name" placeholder="Item Name (e.g. Cute Puppies)" autocomplete="off" value="cute dog 1" /></br>
 
-	<div id="main-items-views">
-		<!-- the root div mapped to $root in riot js -->
-		<div class="list-items">
-			<img src="http://images2.fanpop.com/image/photos/9400000/Aaaaaawwwwwwwwww-Sweet-puppies-9415255-1600-1200.jpg" class='vote-image' data-index='0'/>
-			<h4>Puppies!</h4>
-			<div class='vote-count' data-image='0'></div>
-		</div>
+		Image URL: <input type="text" class="image" name="image" placeholder="" autocomplete="off" value="http://images4.fanpop.com/image/photos/14700000/So-cute-puppies-14749028-1600-1200.jpg"/>
 
-		<!-- this list will stay ordered through model updates -->
-		<div class="list-items">
-			<img src="http://images2.fanpop.com/image/photos/9400000/Friends-Forever-puppies-9460947-1600-1200.jpg" class='vote-image' data-index='1'/>
-			<h4>Moar Puppies!</h4>
-			<div class='vote-count' data-image='1'></div>
-		</div>
-
-		<div class="list-items">
-			<img src="http://grist.files.wordpress.com/2009/10/puppies2.jpg" class='vote-image' data-index='2'/>
-			<h4>Even Moar Puppies!</h4>
-			<div class='vote-count' data-image='2'></div>
-		</div>
-
-		<div class="list-items">
-			<img src="http://images2.fanpop.com/image/photos/13900000/Lovely-Dog-wallpaper-puppies-13935609-1920-1200.jpg" class='vote-image' data-index='3'/>
-			<h4>Puppies?</h4>
-			<div class='vote-count' data-image='3'></div>
-		</div>
-	</div>
-
-		<!-- CREATE FORM -->
-	<form id="new-list-item">
-		<h3>Comment <span class="error" style="display:none;"></span></h3>
-		Comment: <input type="text" class="name" name="name" placeholder="Item Name (e.g. Get Groceries)" autocomplete="off" />
 		<input type="submit" class="submit" value="Create!" />
 	</form>
 
+	<div id="main-items-views">
+		<!-- the root div mapped to $root in riot js -->
+		
+	</div>
+
 	<!-- Templates -->
-	<script type="text/template" class='template'>
-	  <div data-id='{id}' class='comment'>
-	     <div class='view'>
-	     	<label class="li-id">(id: {id})</label>
-	        <label class="li-name">{name}</label>
-	        <input type='button' class='destroy' value='Destroy'/>
-	     </div>
-	     <div class="edit-item-section hover-to-reveal" style="display:none;">
-	     Edit Name: <input type="text" class='edit-name' value='{name}'>
-	     Edit Priority: <input type="text" class='edit-priority' value='{priority}'>
-	     <input type='button' class='save-edit' value='Save Edits'/>
-	     </div>
-	  </div>
+
+
+
+
+
+	<script type="text/template" class="entry">
+		<div class="list-items" data-image="{index}">
+			<img src="{image_url}" class="vote-image" />
+			<h4>{name}</h4>
+			<div class="vote-count">
+				<span class="li-id"></span>
+			</div>
+		</div>
 	</script>
-	<script type="text/template" class='template1'>
-	  <div data-id='{id}' class='comment'>
-	     <div class='view'>
-	     	<label class="li-id">(Vote Count: {votes})</label>
-	     </div>
-	  </div>
+
+	<script type="text/template" class="rank">
+		<div class="tl-list-items" data-image="{index}">
+			<span>TI thing | votes: {votes}</span>
+		</div>
 	</script>
+
+
+
+
 
 	<script src="vendor/js/jquery-1.10.2.min.js"></script>
 	<script src="vendor/js/riot.js"></script>
-	<script src="js/list-item.js"></script>
-	<!-- // <script src="js/main.js"></script> -->
-	<script src="js/votes.js"></script>
+	<script src="js/vote.js"></script>
+	<script src="js/puppy-form.js"></script>
+	<script src="js/votes.js"></script> 
+	<script src="js/line-diagram.js"></script>
 
 </body>
 </html>
