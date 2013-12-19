@@ -5,9 +5,13 @@ var template = $("[type='text/template'].rank").html()
 
 // // DOM Event Listeners
 	var addPuppysToTimeline = function (items) {
-		console.log("item:", item);
-		var newHtml = $($.render(template, item));
-		newHtml.appendTo($root);
+		$root.empty();
+		items.forEach(function(item) {
+	        var newHtml = $($.render(template, item));
+	        newHtml.appendTo($root);
+		});
+
+
 
 		// need to pass in all items here 
 		// and render them all to the 
@@ -18,8 +22,11 @@ var template = $("[type='text/template'].rank").html()
 	};
 
 // Model Event Listeners
-	puppy.on("create", function(item) {
-		addPuppysToTimeline(item);
+	puppy.on("create", function(item, items) {
+		addPuppysToTimeline(items);
+	});
+	puppy.on("sort", function(items) {
+		addPuppysToTimeline(items);
 	});
 
 });
