@@ -24,13 +24,23 @@
     listItems.destroy(index);
   });
 
-  /*/ DELETE THIS LINE FOR THE EXTENSION
   // When the user clicks the edit button, toggle the 'edit' css
   // class; the css does all the heavy lifting
   $root.on('click', ".list-item .edit", function () {
     $(this).closest('.list-item').toggleClass('edit');
   });
-  /**/
+
+  $root.on('submit', 'form.save-edit', function () {
+    console.log('clicked save edit');
+    var $listItem = $(this).closest('.list-item');
+    var newName = $('.edit-name', $listItem).val();
+    var newCat = $('.edit-category', $listItem).val();
+    var index = $listItem.index();
+
+    console.log('New stuff:', newName, newCat);
+
+    listItems.update(index, newName, newCat);
+  });
 
 // - - - - - - - - - -
 // Model Interactions
@@ -50,11 +60,14 @@
     $('.list-item', $root).eq(itemIndex).remove();
   });
 
-  /*/ DELETE THIS LINE FOR THE EXTENSION
   // When we hear the 'update' event, that means a list item's data
   // has just updated. We need to update the page to reflect that,
   // as well as remove the 'edit' class so the edit form disappears
-  listItems.on(...);
+  listItems.on('update', function (updatedItem, index) {
+    var $item = $('.list-item', $root).eq(index);
+    $item.find('.li-name').text(updatedItem.name);
+    $item.find('.li-category').text(updatedItem.category);
+  });
   /**/
 
 })();

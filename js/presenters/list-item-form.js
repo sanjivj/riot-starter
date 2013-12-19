@@ -33,6 +33,7 @@
     }
 
     // Create the new items using our model
+    console.log('Creating', newListItem);
     listItems.create(newListItem);
 
     // clear out the new items input fields
