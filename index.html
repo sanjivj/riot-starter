@@ -1,19 +1,96 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Riot Starter</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>Pomment.</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 </head>
 <body>
 
-<!-- HTML -->
+  <h1>Pomment!!!!!!!!!!</h1>
+  <hr />
 
-<div id="templates">
-  <!-- TEMPLATES -->
-</div>
+  <div class="pet">
+    <h2>Mysterious fuzzball accepts a gift</h2>
+    <div class="photo">
+      <img src="http://i.imgur.com/Sz3Jmr0.jpg" />
+      <div class="total-like-count"></div>
+    </div>
 
-<script src="vendor/js/jquery-1.10.2.min.js"></script>
-<script src="vendor/js/riot.js"></script>
-<script src="js/main.js"></script>
+    <h3>Comments</h3>
+    <div class="comments"></div>
+
+    <form>
+      <h4>Post a New Comment</h4>
+      <label>Your Name:</label>
+      <input class="author" type="text" />
+      <label>Message:</label>
+      <input class="message" type="text" />
+      <button>Submit</button>
+    </form>
+  </div>
+
+
+  <!-- >>>>>> OVER-EXTENSION: DELETE THIS LINE <<<<<<
+  <hr />
+
+  <div class="pet">
+    <h2>hiseyeshisheyeshiseyes</h2>
+    <div class="photo">
+      <img src="http://i.imgur.com/xMkqiN3.jpg" />
+      <div class="total-like-count"></div>
+    </div>
+
+    <div class="comments"></div>
+
+    <form>
+      <input class="author" type="text" />
+      <input class="message" type="text" />
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <div class="pet">
+    <h2>Who, me? Couldn't be</h2>
+    <div class="photo">
+      <img src="http://i.imgur.com/4DdZDd2.jpg" />
+      <div class="total-like-count"></div>
+    </div>
+
+    <div class="comments"></div>
+
+    <form>
+      <input class="author" type="text" />
+      <input class="message" type="text" />
+      <button>Submit</button>
+    </form>
+  </div>
+<!-- -->
+
+
+  <!-- Templates -->
+
+  <div id="templates">
+    <script type="text/template" class="comment">
+      <div class="comment" data-id="{id}">
+        <b class="author">{ author }</b>: { message } -
+        <span class="like-count"></span> <a href="#" class="like">Like</a>
+      </div>
+    </script>
+  </div>
+
+
+
+  <!-- 3rd party scripts -->
+  <script src="vendor/js/jquery-1.10.2.min.js"></script>
+  <script src="vendor/js/riot.js"></script>
+  <!-- Models -->
+  <script src="js/models/comment.js"></script>
+  <!-- Presenters -->
+  <script src="js/presenters/comment-form.js"></script>
+  <script src="js/presenters/comment-list.js"></script>
+  <!-- Initializers -->
+  <script src="js/main.js"></script>
 
 </body>
 </html>

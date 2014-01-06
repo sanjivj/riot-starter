@@ -1,0 +1,14 @@
+
+body {
+  font-size: 18px;
+}
+
+.photo img {
+  max-height: 300px;
+}
+
+.comment {
+  background: #eee;
+  border: #ccc;
+  padding: 8px;
+}
