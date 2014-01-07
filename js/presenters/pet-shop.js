@@ -24,12 +24,6 @@
     // Both presenters we are about to create will use these comments
     var petComments = new Comment();
 
-    // Initialize with a single comment for easier "like" testing
-    petComments.create({
-      author: 'Bob',
-      message: "Anytime I close the bathroom door..."
-    });
-
     // Now we create our form presenter, passing it two things:
     // 1. The Comment model instance to use
     // 2. The element (root) that the new presenter is assigned to
@@ -46,6 +40,12 @@
     var commentList = new CommentListPresenter({
       comments: petComments,
       root: $petRoot.find('.comments')
+    });
+
+    // Initialize with a single comment for easier "like" testing
+    petComments.create({
+      author: 'Bob',
+      message: "Anytime I close the bathroom door..."
     });
   };
 
