@@ -1,31 +1,35 @@
 (function () {
 
-  var $root = $('.pet .comments')
-    , template = $('#templates .comment').html()
-  ;
+  var commentTemplate = $('#templates .comment').html();
 
-  // // // // // // //
- // View Listeners //
-// // // // // // //
+  window.CommentListPresenter = function (options) {
 
-  $root.on('click', '.like', function (e) {
-    e.preventDefault();
-    var id = $(this).closest('.comment').data('id');
-    comments.like(id);
-  });
+    var $root = options.root;
+    var comments = options.comments;
 
-  // // // // // // //
- // Model Listeners /
-// // // // // // //
+      // // // // // // //
+     // View Listeners //
+    // // // // // // //
 
-  comments.on('create', function (newComment) {
-    var newCommentHtml = $.render(template, newComment);
-    $root.append(newCommentHtml);
-  });
+    $root.on('click', '.like', function (e) {
+      e.preventDefault();
+      var id = $(this).closest('.comment').data('id');
+      comments.like(id);
+    });
 
-  comments.on('like', function(comment) {
-    var id = comment.id;
-    $('div[data-id=' + id + ']').find('.like-count').text(comment.likes + ' likes');
-  });
+      // // // // // // //
+     // Model Listeners /
+    // // // // // // //
+
+    comments.on('create', function (newComment) {
+      var newCommentHtml = $.render(commentTemplate, newComment);
+      $root.append(newCommentHtml);
+    });
+
+    comments.on('like', function(comment) {
+      var id = comment.id;
+      $root.find('[data-id=' + id + ']').find('.like-count').text(comment.likes + ' likes');
+    });
+  };
 
 })();

@@ -15,7 +15,7 @@
     return -1;
   };
 
-  var Comment = function () {
+  window.Comment = function () {
     // The "private" variable
     var comments = [];
     var index = 0;
@@ -41,7 +41,5 @@
     };
 
   };
-
-  window.comments = new Comment();
 
 })();

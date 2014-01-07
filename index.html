@@ -10,67 +10,29 @@
   <h1>Pomment!!!!!!!!!!</h1>
   <hr />
 
-  <div class="pet">
-    <h2>Mysterious fuzzball accepts a gift</h2>
-    <div class="photo">
-      <img src="http://i.imgur.com/Sz3Jmr0.jpg" />
-      <div class="total-like-count"></div>
-    </div>
-
-    <h3>Comments</h3>
-    <div class="comments"></div>
-
-    <form>
-      <h4>Post a New Comment</h4>
-      <label>Your Name:</label>
-      <input class="author" type="text" />
-      <label>Message:</label>
-      <input class="message" type="text" />
-      <button>Submit</button>
-    </form>
-  </div>
-
-
-  <!-- >>>>>> OVER-EXTENSION: DELETE THIS LINE <<<<<<
-  <hr />
-
-  <div class="pet">
-    <h2>hiseyeshisheyeshiseyes</h2>
-    <div class="photo">
-      <img src="http://i.imgur.com/xMkqiN3.jpg" />
-      <div class="total-like-count"></div>
-    </div>
-
-    <div class="comments"></div>
-
-    <form>
-      <input class="author" type="text" />
-      <input class="message" type="text" />
-      <button>Submit</button>
-    </form>
-  </div>
-
-  <div class="pet">
-    <h2>Who, me? Couldn't be</h2>
-    <div class="photo">
-      <img src="http://i.imgur.com/4DdZDd2.jpg" />
-      <div class="total-like-count"></div>
-    </div>
-
-    <div class="comments"></div>
-
-    <form>
-      <input class="author" type="text" />
-      <input class="message" type="text" />
-      <button>Submit</button>
-    </form>
-  </div>
-<!-- -->
-
+  <div class="pet-shop"></div>
 
   <!-- Templates -->
 
   <div id="templates">
+    <script type="text/template" class="pet">
+      <div class="pet">
+        <h2>{ title }</h2>
+        <div class="photo">
+          <img src="{ imgSrc }" />
+          <div class="total-like-count"></div>
+        </div>
+
+        <div class="comments"></div>
+
+        <form>
+          <input class="author" type="text" />
+          <input class="message" type="text" />
+          <button>Submit</button>
+        </form>
+      </div>
+    </script>
+
     <script type="text/template" class="comment">
       <div class="comment" data-id="{id}">
         <b class="author">{ author }</b>: { message } -
@@ -89,6 +51,7 @@
   <!-- Presenters -->
   <script src="js/presenters/comment-form.js"></script>
   <script src="js/presenters/comment-list.js"></script>
+  <script src="js/presenters/pet-shop.js"></script>
   <!-- Initializers -->
   <script src="js/main.js"></script>
 
