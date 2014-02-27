@@ -7,20 +7,20 @@
    * using the global ListItem model.
    */
 
-  var $root = $('form.new-list-item')
+  var $view = $('form.new-list-item')
     , invalidText = '(!) You must include both an item name and an item category.'
   ;
 
 // View (HTML) Interactions
 
-  $root.on('submit', function (e) {
+  $view.on('submit', function (e) {
     // Make sure the form submit doesn't reload the page
     e.preventDefault();
 
     // Grab all data that the user typed in
     newListItem = {
-      name: $('.name', $root).val(),
-      category: $('.category', $root).val()
+      name: $('.name', $view).val(),
+      category: $('.category', $view).val()
     };
 
     // Validation:
@@ -36,7 +36,7 @@
     listItems.create(newListItem);
 
     // clear out the new items input fields
-    $('input[type="text"]', $root).val('');
+    $('input[type="text"]', $view).val('');
   });
 
 })();
